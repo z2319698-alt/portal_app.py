@@ -1,70 +1,65 @@
 import streamlit as st
 
-# 1. 網頁基本設定：隱藏側邊欄，讓視覺集中在中央按鈕
-st.set_page_config(page_title="全興廠管理總系統", layout="wide", initial_sidebar_state="collapsed")
+# 1. 網頁基本設定
+st.set_page_config(page_title="大豐環保管理總系統", layout="wide", initial_sidebar_state="collapsed")
 
-# --- 高質感門戶 CSS ---
+# --- 高質感大豐環保門戶 CSS ---
 st.markdown("""
     <style>
     /* 深色背景 */
     .stApp { background-color: #0E1117; }
     
-    /* 總標題文字放大 */
+    /* 總標題文字放大與變更名稱 */
     .main-title {
         color: #FFFFFF;
         text-align: center;
-        font-size: 56px !important;
+        font-size: 64px !important; /* 加大標題 */
         font-weight: 800;
-        margin-bottom: 60px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        margin-bottom: 70px;
+        padding-top: 40px;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+        letter-spacing: 2px;
     }
 
-    /* 大型卡片按鈕樣式 */
+    /* 大型卡片按鈕樣式：寬度全滿、字體與按鈕同寬感 */
     .stButton > button {
-        width: 100%;
-        height: 280px !important; /* 超大按鈕 */
-        border-radius: 25px !important;
+        width: 100% !important;
+        height: 320px !important; /* 再次加高按鈕 */
+        border-radius: 30px !important;
         background: linear-gradient(145deg, #23272c, #1a1c20);
         color: white !important;
-        font-size: 32px !important; /* 標題文字大 */
+        font-size: 36px !important; /* 字體放大 */
         font-weight: bold !important;
         border: 2px solid #30363d !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.5;
     }
 
-    /* 懸停效果：亮藍色外框與浮起感 */
+    /* 懸停效果：亮綠色外框 (環保色系) */
     .stButton > button:hover {
-        border-color: #58a6ff !important;
-        color: #58a6ff !important;
-        transform: scale(1.05);
-        box-shadow: 0px 20px 40px rgba(88, 166, 255, 0.15);
+        border-color: #2ECC71 !important;
+        color: #2ECC71 !important;
+        transform: scale(1.03);
+        box-shadow: 0px 15px 45px rgba(46, 204, 113, 0.2);
     }
     
-    /* 隱藏預設元件 */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+    /* 隱藏側邊欄與頁尾 */
     [data-testid="stSidebar"] { display: none; }
+    footer {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-st.markdown('<p class="main-title">🏢 全興廠自動化管理平台</p>', unsafe_allow_html=True)
+# 品牌標題更新
+st.markdown('<p class="main-title">🏢 大豐環保自動化管理平台</p>', unsafe_allow_html=True)
 
-# 建立三欄式大型佈局
+# 建立三欄式佈局，並增加間距
 col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
-    if st.button("🌊\n\n自動化監測系統\n(廢水 / 統計)"):
-        # 跳轉至您的監測系統
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-water-monitor.streamlit.app/">', unsafe_allow_html=True)
-
-with col2:
-    if st.button("📜\n\n許可證辦理系統\n(證照管理)"):
-        # 跳轉至您的許可證系統
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-permits.streamlit.app/">', unsafe_allow_html=True)
-
-with col3:
-    if st.button("📝\n\n危害告知表單\n(風險控管)"):
-        # 跳轉至您的危害告知系統
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-hazard-form.streamlit.app/">', unsafe_allow_html=True)
-
-st.markdown("<br><br><p style='text-align: center; color: #8b949e; font-size: 18px;'>© 2026 全興廠數據整合中心 | 系統運行正常</p>", unsafe_allow_html=True)
+    # 第一個按鈕名稱修正：(數據監測)
+    if st.button("🌊\n\n
