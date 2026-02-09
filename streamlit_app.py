@@ -20,46 +20,40 @@ st.markdown("""
         text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
     }
 
-    /* 強化版卡片按鈕：圖示與文字同寬感 */
-    .stButton > button {
+    /* 針對 st.link_button 的樣式強化 */
+    div.stLinkButton > a {
         width: 100% !important;
-        height: 420px !important; /* 加高按鈕空間 */
+        height: 420px !important; 
         border-radius: 35px !important;
-        background: linear-gradient(145deg, #23272c, #1a1c20);
+        background: linear-gradient(145deg, #23272c, #1a1c20) !important;
         color: white !important;
         border: 2px solid #30363d !important;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        
-        /* 核心關鍵：放大內容佈局 */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        white-space: pre-wrap;
-        line-height: 1.2;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-decoration: none !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     }
 
-    /* 針對按鈕內文字與圖示的精細調整 */
-    .stButton > button p {
-        font-size: 38px !important; /* 下方文字大小 */
-        font-weight: bold !important;
-    }
-
-    /* 讓圖示 (Emoji) 變得超級大，跟文字同寬 */
-    .stButton > button::first-line {
-        font-size: 100px !important; /* 調整圖示大小至 100px */
-        line-height: 1.8;
-    }
-
-    /* 懸停效果：大豐綠 */
-    .stButton > button:hover {
+    /* 懸停效果：亮綠色外框 */
+    div.stLinkButton > a:hover {
         border-color: #2ECC71 !important;
         color: #2ECC71 !important;
-        transform: scale(1.05);
-        box-shadow: 0px 20px 50px rgba(46, 204, 113, 0.25);
+        transform: scale(1.05) !important;
+        box-shadow: 0px 20px 50px rgba(46, 204, 113, 0.25) !important;
     }
-    
+
+    /* 讓內容換行並放大 */
+    div.stLinkButton p {
+        font-size: 38px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+        line-height: 1.5 !important;
+        white-space: pre-wrap !important;
+    }
+
     /* 隱藏側邊欄 */
     [data-testid="stSidebar"] { display: none; }
     footer {visibility: hidden;}
@@ -73,17 +67,17 @@ st.markdown('<p class="main-title">🏢 大豐環保自動化管理平台</p>', 
 col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
-    # 這裡的 Emoji 會被 CSS 抓取並放大
-    if st.button("🌊\n自動化監測系統\n(數據監測)"):
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-water-monitor.streamlit.app/">', unsafe_allow_html=True)
+    # 使用 link_button 確保 100% 成功跳轉
+    st.link_button("🌊\n自動化監測系統\n(數據監測)", 
+                   "https://dafeng-water-monitor.streamlit.app/")
 
 with col2:
-    if st.button("📜\n許可證辦理系統\n(證照管理)"):
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-permits.streamlit.app/">', unsafe_allow_html=True)
+    st.link_button("📜\n許可證辦理系統\n(證照管理)", 
+                   "https://dafeng-permits.streamlit.app/")
 
 with col3:
-    if st.button("📝\n危害告知表單\n(風險控管)"):
-        st.write('<meta http-equiv="refresh" content="0;url=https://dafeng-hazard-form.streamlit.app/">', unsafe_allow_html=True)
+    st.link_button("📝\n危害告知表單\n(風險控管)", 
+                   "https://dafeng-hazard-form.streamlit.app/")
 
 # 底部版權
 st.markdown("<br><br><p style='text-align: center; color: #8b949e; font-size: 20px;'>© 2026 大豐環保數據整合中心 | 系統運行正常</p>", unsafe_allow_html=True)
